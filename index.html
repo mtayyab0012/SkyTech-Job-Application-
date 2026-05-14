@@ -1,112 +1,763 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SkyTech Innovations - Job Application</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application — SkyTech Innovations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <link rel="stylesheet" href="style.css">
+    :root {
+      --brand: #534AB7;
+      --brand-light: rgba(83,74,183,.07);
+      --brand-mid: rgba(83,74,183,.15);
+      --danger: #C0392B;
+      --success: #27AE60;
+      --text-primary: #1a1a2e;
+      --text-secondary: #555570;
+      --text-muted: #9999b3;
+      --border: #e0e0ef;
+      --border-focus: #534AB7;
+      --bg: #f7f7fc;
+      --card-bg: #ffffff;
+      --inner-bg: #f4f4fa;
+      --radius: 10px;
+      --radius-sm: 6px;
+      --shadow: 0 2px 16px rgba(83,74,183,.08);
+      --shadow-card: 0 1px 6px rgba(83,74,183,.07);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .company-header {
+      text-align: center;
+      padding: 2.5rem 2rem 2rem;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      border-top: 4px solid var(--brand);
+    }
+    .company-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: var(--brand);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-icon svg { width: 22px; height: 22px; }
+    .company-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      color: var(--text-primary);
+      letter-spacing: -.01em;
+    }
+    .company-name span { color: var(--brand); }
+    .form-subline {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+    .form-subline strong { color: var(--danger); }
+
+    /* ── Form card ── */
+    .form-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── Section title ── */
+    .section-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--brand);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-title svg { flex-shrink: 0; }
+
+    /* ── Grids ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .mb { margin-bottom: 14px; }
+
+    /* ── Fields ── */
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: .01em;
+    }
+    .req { color: var(--danger); margin-left: 2px; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color .15s, box-shadow .15s;
+      appearance: none;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--border-focus);
+      box-shadow: 0 0 0 3px var(--brand-mid);
+    }
+    .field input:disabled, .field select:disabled {
+      background: var(--inner-bg);
+      color: var(--text-muted);
+      cursor: not-allowed;
+    }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 32px;
+    }
+    .hint { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ── Gender ── */
+    .gender-group { display: flex; gap: 8px; }
+    .gender-opt {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 6px;
+      cursor: pointer;
+      font-size: 12px; font-weight: 500;
+      color: var(--text-secondary);
+      transition: all .15s;
+      user-select: none;
+    }
+    .gender-opt input { display: none; }
+    .gender-opt.selected { border-color: var(--brand); color: var(--brand); background: var(--brand-light); }
+
+    /* ── Teams prefix input ── */
+    .prefix-wrap { position: relative; }
+    .prefix-wrap input { padding-left: 34px; }
+    .prefix-icon {
+      position: absolute; left: 10px; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      display: flex;
+    }
+
+    /* ── Edu / Exp cards ── */
+    .sub-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 12px;
+      background: var(--inner-bg);
+    }
+    .sub-card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 14px;
+    }
+    .sub-card-num {
+      font-size: 12px; font-weight: 600;
+      color: var(--brand);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .remove-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 12px; font-family: 'DM Sans', sans-serif;
+      color: var(--text-muted);
+      padding: 3px 8px; border-radius: 4px;
+      display: flex; align-items: center; gap: 4px;
+      transition: color .15s, background .15s;
+    }
+    .remove-btn:hover { color: var(--danger); background: rgba(192,57,43,.06); }
+
+    /* ── Continuing checkbox ── */
+    .mini-toggle {
+      display: inline-flex; align-items: center; gap: 8px;
+      cursor: pointer; user-select: none; margin-top: 4px;
+    }
+    .mini-cb {
+      width: 16px; height: 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all .18s;
+      background: #fff;
+    }
+    .mini-cb.checked { background: var(--brand); border-color: var(--brand); }
+    .mini-cb svg { opacity: 0; transition: opacity .13s; }
+    .mini-cb.checked svg { opacity: 1; }
+    .mini-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+
+    /* ── Exp toggle ── */
+    .exp-toggle {
+      display: flex; align-items: center; gap: 12px;
+      padding: 13px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--inner-bg);
+      cursor: pointer; user-select: none;
+      transition: border-color .2s, background .2s;
+      margin-bottom: 14px;
+    }
+    .exp-toggle:hover { border-color: var(--brand); }
+    .exp-toggle.active { border-color: var(--brand); background: var(--brand-light); }
+    .big-cb {
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: all .2s; background: #fff;
+    }
+    .big-cb.checked { background: var(--brand); border-color: var(--brand); }
+    .big-cb svg { opacity: 0; transition: opacity .15s; }
+    .big-cb.checked svg { opacity: 1; }
+    .toggle-text { display: flex; flex-direction: column; gap: 2px; }
+    .toggle-main { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .toggle-sub { font-size: 11px; color: var(--text-muted); }
+
+    .exp-body { transition: opacity .25s; }
+    .exp-body.disabled { opacity: .35; pointer-events: none; }
+    .locked-note {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 12px; color: var(--text-muted);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 4px;
+    }
+    .locked-note.hidden { display: none; }
+
+    /* ── Add button ── */
+    .add-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: none;
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 11px 16px;
+      font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif;
+      color: var(--text-secondary);
+      cursor: pointer; width: 100%;
+      justify-content: center;
+      transition: all .15s;
+      margin-top: 4px;
+    }
+    .add-btn:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-light); }
+
+    /* ── Upload zones ── */
+    .upload-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .upload-subhead { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px; }
+    .upload-zone {
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all .15s;
+      background: var(--inner-bg);
+      position: relative; overflow: hidden;
+    }
+    .upload-zone:hover { border-color: var(--brand); background: var(--brand-light); }
+    .upload-zone input[type=file] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+    }
+    .upload-icon { font-size: 22px; margin-bottom: 6px; }
+    .upload-label { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+    .upload-hint { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .upload-fname { font-size: 11px; color: var(--success); margin-top: 6px; font-weight: 500; min-height: 14px; }
+
+    /* ── Submit ── */
+    .submit-wrap { margin-top: 1.5rem; }
+    .submit-btn {
+      width: 100%; padding: 14px;
+      font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif;
+      background: var(--brand); color: #fff;
+      border: none; border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .15s, transform .1s, box-shadow .15s;
+      box-shadow: 0 4px 14px rgba(83,74,183,.3);
+      letter-spacing: .01em;
+    }
+    .submit-btn:hover { background: #3d35a0; box-shadow: 0 6px 20px rgba(83,74,183,.4); }
+    .submit-btn:active { transform: scale(.99); }
+
+    /* ── Success banner ── */
+    .success-banner {
+      display: none;
+      background: #eafaf1;
+      border: 1.5px solid #27AE60;
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1e8449;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2, .grid-3, .upload-grid { grid-template-columns: 1fr; }
+      .gender-group { flex-direction: column; }
+      .form-card { padding: 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
+<div class="page-wrap">
 
-  <div class="header">
-    <h1>Sky<span>Tech</span> Innovations</h1>
-    <p>Please fill all mandatory fields.</p>
+  <!-- Header -->
+  <div class="company-header">
+    <div class="company-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="company-name">Sky<span>Tech</span> Innovations</div>
+    </div>
+    <div class="form-subline">Please fill in the fields below. Fields marked <strong>*</strong> are mandatory.</div>
   </div>
 
-  <form 
+  <!--
+    NETLIFY FORMS:
+    - The form tag has name="job-application" and data-netlify="true"
+    - Netlify detects this at build time and captures all submissions
+    - File uploads are handled by Netlify's built-in storage
+    - You can view submissions at: app.netlify.com → Your Site → Forms
+    - Add your email under: Site Settings → Forms → Form notifications
+  -->
+  <form
     name="job-application"
     method="POST"
-    data-netlify="true"
     enctype="multipart/form-data"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    onsubmit="handleSubmit(event)"
   >
-
+    <!-- Netlify hidden fields -->
     <input type="hidden" name="form-name" value="job-application">
+    <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
 
-    <h2>Personal Information</h2>
-
-    <div class="grid-3">
-      <input type="text" name="firstname" placeholder="First Name" required>
-      <input type="text" name="lastname" placeholder="Last Name" required>
-      <input type="text" name="fathername" placeholder="Father Name" required>
-    </div>
-
-    <div class="grid-2">
-      <input type="date" name="dob" required>
-      <input type="text" id="cnic" name="cnic" placeholder="00000-0000000-0" required>
-    </div>
-
-    <div class="grid-2">
-      <input type="tel" name="phone" placeholder="0300-1234567" required>
-      <input type="text" name="occupation" placeholder="Occupation" required>
-    </div>
-
-    <input type="text" name="address" placeholder="Address" required>
-
-    <div class="grid-3">
-      <select name="province" required>
-        <option value="">Province</option>
-        <option>Punjab</option>
-        <option>Sindh</option>
-        <option>KPK</option>
-        <option>Balochistan</option>
-      </select>
-
-      <input type="text" name="city" placeholder="City" required>
-
-      <select name="gender" required>
-        <option value="">Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-      </select>
-    </div>
-
-    <h2>Microsoft Teams Details</h2>
-
-    <div class="grid-2">
-      <input type="email" name="teamsemail" placeholder="MS Teams Email" required>
-      <input type="text" name="teamsusername" placeholder="MS Teams Username" required>
-    </div>
-
-    <h2>Education</h2>
-
-    <textarea name="education" rows="4" placeholder="Enter education details"></textarea>
-
-    <h2>Work Experience</h2>
-
-    <textarea name="experience" rows="4" placeholder="Enter work experience"></textarea>
-
-    <h2>Document Uploads</h2>
-
-    <div class="upload-grid">
-
-      <div class="upload-box">
-        <label>Internet Speed Test</label>
-        <input type="file" name="speedtest" required>
+    <!-- ══ PERSONAL INFO ══ -->
+    <div class="form-card">
+      <div class="section-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Personal information
       </div>
 
-      <div class="upload-box">
-        <label>Resume / CV</label>
-        <input type="file" name="resume" required>
+      <div class="grid-3 mb">
+        <div class="field"><label>First name <span class="req">*</span></label><input type="text" name="first_name" placeholder="e.g. Ali" required></div>
+        <div class="field"><label>Last name <span class="req">*</span></label><input type="text" name="last_name" placeholder="e.g. Khan" required></div>
+        <div class="field"><label>Father's name <span class="req">*</span></label><input type="text" name="father_name" placeholder="e.g. Mohammad Khan" required></div>
       </div>
 
-      <div class="upload-box">
-        <label>Profile Picture</label>
-        <input type="file" name="photo" required>
+      <div class="grid-2 mb">
+        <div class="field"><label>Date of birth <span class="req">*</span></label><input type="date" name="dob" required></div>
+        <div class="field">
+          <label>CNIC <span class="req">*</span></label>
+          <input type="text" name="cnic" id="cnic" placeholder="00000-0000000-0" maxlength="15" required>
+          <span class="hint">Format: 00000-0000000-0</span>
+        </div>
       </div>
 
+      <div class="grid-2 mb">
+        <div class="field"><label>Phone number <span class="req">*</span></label><input type="tel" name="phone" placeholder="e.g. 0300-1234567" required></div>
+        <div class="field"><label>Occupation <span class="req">*</span></label><input type="text" name="occupation" placeholder="e.g. Software Engineer" required></div>
+      </div>
+
+      <div class="field mb">
+        <label>Address <span class="req">*</span></label>
+        <input type="text" name="address" placeholder="House No., Street, Area" required>
+      </div>
+
+      <div class="grid-3 mb">
+        <div class="field">
+          <label>Province <span class="req">*</span></label>
+          <select name="province" required>
+            <option value="" disabled selected>Select province</option>
+            <option>Punjab</option>
+            <option>Sindh</option>
+            <option>Khyber Pakhtunkhwa</option>
+            <option>Balochistan</option>
+            <option>Gilgit-Baltistan</option>
+            <option>Azad Kashmir</option>
+            <option>Islamabad Capital Territory</option>
+          </select>
+        </div>
+        <div class="field"><label>City <span class="req">*</span></label><input type="text" name="city" placeholder="e.g. Lahore" required></div>
+        <div class="field">
+          <label>Gender <span class="req">*</span></label>
+          <div class="gender-group">
+            <label class="gender-opt" id="g-male" onclick="selectGender('male')">
+              <input type="radio" name="gender" value="Male" required>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5.5 5.5M19 5h-5M19 5v5"/></svg> Male
+            </label>
+            <label class="gender-opt" id="g-female" onclick="selectGender('female')">
+              <input type="radio" name="gender" value="Female">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg> Female
+            </label>
+            <label class="gender-opt" id="g-other" onclick="selectGender('other')">
+              <input type="radio" name="gender" value="Other">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg> Other
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <button type="submit">Submit Application</button>
+    <!-- ══ MS TEAMS ══ -->
+    <div class="form-card">
+      <div class="section-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#5059C9"><rect width="24" height="24" rx="5"/><path d="M16.5 8.25a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0zM7.875 10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM14.625 10.5c0 1.45-.585 2.76-1.53 3.712A5.25 5.25 0 0 1 9.375 15.75H7a2.25 2.25 0 0 1-2.25-2.25v-.75a3 3 0 0 1 3-3h4.5a2.625 2.625 0 0 1 2.625 2.625v-.375zm.75.375h1.5a2.25 2.25 0 0 1 2.25 2.25V14.25a1.5 1.5 0 0 1-1.5 1.5H15.19A6 6 0 0 0 15.75 13v-1.875z" fill="white"/></svg>
+        Microsoft Teams details
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>MS Teams email <span class="req">*</span></label>
+          <div class="prefix-wrap">
+            <div class="prefix-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <input type="email" name="teams_email" placeholder="e.g. ali.khan@organisation.com" required>
+          </div>
+          <span class="hint">The email address linked to your MS Teams account</span>
+        </div>
+        <div class="field">
+          <label>MS Teams username <span class="req">*</span></label>
+          <div class="prefix-wrap">
+            <div class="prefix-icon">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <input type="text" name="teams_username" placeholder="e.g. Ali Khan or ali.khan" required>
+          </div>
+          <span class="hint">Your display name or username shown on MS Teams</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ EDUCATION ══ -->
+    <div class="form-card">
+      <div class="section-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Education
+      </div>
+      <div id="edu-list"></div>
+      <button type="button" class="add-btn" onclick="addEdu()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add education
+      </button>
+    </div>
+
+    <!-- ══ WORK EXPERIENCE ══ -->
+    <div class="form-card">
+      <div class="section-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Work experience
+      </div>
+
+      <div class="exp-toggle" id="exp-toggle" onclick="toggleExp()">
+        <div class="big-cb" id="exp-cb">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="toggle-text">
+          <span class="toggle-main">Do you have any past work experience?</span>
+          <span class="toggle-sub" id="toggle-sub">Check to fill in your work history below</span>
+        </div>
+      </div>
+
+      <div class="locked-note" id="exp-locked">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Check the box above to add your work experience
+      </div>
+
+      <div class="exp-body disabled" id="exp-body">
+        <div id="exp-list"></div>
+        <button type="button" class="add-btn" onclick="addExp()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add work experience
+        </button>
+      </div>
+    </div>
+
+    <!-- ══ UPLOADS ══ -->
+    <div class="form-card">
+      <div class="section-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Document uploads
+      </div>
+      <div class="upload-grid">
+        <div>
+          <div class="upload-subhead">Internet speed test <span class="req">*</span></div>
+          <div class="upload-zone">
+            <input type="file" name="speed_test" accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.tiff,.heic" onchange="showFile(this,'f-speed')" required>
+            <div class="upload-icon">📡</div>
+            <div class="upload-label">Upload file</div>
+            <div class="upload-hint">PDF, JPG, PNG or any image</div>
+            <div class="upload-fname" id="f-speed"></div>
+          </div>
+        </div>
+        <div>
+          <div class="upload-subhead">Resume / CV <span class="req">*</span></div>
+          <div class="upload-zone">
+            <input type="file" name="resume" accept=".pdf,.jpg,.jpeg,.png" onchange="showFile(this,'f-resume')" required>
+            <div class="upload-icon">📄</div>
+            <div class="upload-label">Upload resume</div>
+            <div class="upload-hint">PDF, JPG or JPEG only</div>
+            <div class="upload-fname" id="f-resume"></div>
+          </div>
+        </div>
+        <div>
+          <div class="upload-subhead">Profile picture <span class="req">*</span></div>
+          <div class="upload-zone">
+            <input type="file" name="profile_photo" accept=".jpg,.jpeg" onchange="showFile(this,'f-photo')" required>
+            <div class="upload-icon">🖼️</div>
+            <div class="upload-label">Upload photo</div>
+            <div class="upload-hint">JPEG only</div>
+            <div class="upload-fname" id="f-photo"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="submit-wrap">
+      <button type="submit" class="submit-btn">Submit application →</button>
+      <div class="success-banner" id="success-banner">
+        ✅ Your application has been submitted successfully! We'll be in touch soon.
+      </div>
+    </div>
 
   </form>
 
+  <div class="footer">© 2026 SkyTech Innovations. All rights reserved.</div>
 </div>
 
-<script src="script.js"></script>
+<script>
+  /* ── CNIC auto-format ── */
+  document.getElementById('cnic').addEventListener('input', function () {
+    let v = this.value.replace(/\D/g, '');
+    let out = '';
+    if (v.length > 0) out += v.slice(0, 5);
+    if (v.length > 5) out += '-' + v.slice(5, 12);
+    if (v.length > 12) out += '-' + v.slice(12, 13);
+    this.value = out;
+  });
+
+  /* ── Gender ── */
+  function selectGender(val) {
+    ['male','female','other'].forEach(g => document.getElementById('g-'+g).classList.remove('selected'));
+    document.getElementById('g-'+val).classList.add('selected');
+  }
+
+  /* ══ EDUCATION ══ */
+  let eduCount = 0;
+  function addEdu() {
+    eduCount++;
+    const id = 'edu-' + eduCount;
+    const n = eduCount;
+    const html = `
+    <div class="sub-card" id="${id}">
+      <div class="sub-card-header">
+        <span class="sub-card-num">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          Education #${n}
+        </span>
+        <button type="button" class="remove-btn" onclick="removeCard('${id}', 'edu')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          Remove
+        </button>
+      </div>
+      <div class="grid-2 mb">
+        <div class="field">
+          <label>Degree / Level <span class="req">*</span></label>
+          <select name="edu_degree_${n}">
+            <option value="" disabled selected>Select degree</option>
+            <option>Matric (SSC)</option>
+            <option>Intermediate (HSSC)</option>
+            <option>Bachelors</option>
+            <option>Masters</option>
+            <option>MPhil</option>
+            <option>PhD</option>
+            <option>Diploma / Certificate</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Degree / Program name <span class="req">*</span></label>
+          <input type="text" name="edu_program_${n}" placeholder="e.g. Computer Science, Pre-Engineering">
+        </div>
+      </div>
+      <div class="grid-2 mb">
+        <div class="field">
+          <label>Institute name <span class="req">*</span></label>
+          <input type="text" name="edu_institute_${n}" placeholder="e.g. University of Punjab">
+        </div>
+        <div class="field">
+          <label>Year of completion <span class="req">*</span></label>
+          <input type="number" name="edu_year_${n}" id="yr-${id}" min="1970" max="2035" placeholder="e.g. 2022">
+          <span class="hint" id="yr-hint-${id}">Enter the year you completed this degree</span>
+        </div>
+      </div>
+      <label class="mini-toggle" onclick="toggleContinuing('${id}')">
+        <div class="mini-cb" id="cb-${id}">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <span class="mini-label">Currently continuing — not yet completed</span>
+      </label>
+    </div>`;
+    document.getElementById('edu-list').insertAdjacentHTML('beforeend', html);
+  }
+
+  function toggleContinuing(id) {
+    const cb = document.getElementById('cb-' + id);
+    const yr = document.getElementById('yr-' + id);
+    const hint = document.getElementById('yr-hint-' + id);
+    const on = !cb.classList.contains('checked');
+    cb.classList.toggle('checked', on);
+    yr.disabled = on;
+    yr.value = on ? '' : yr.value;
+    yr.placeholder = on ? 'In progress…' : 'e.g. 2022';
+    hint.textContent = on ? 'Year not required — currently enrolled' : 'Enter the year you completed this degree';
+    hint.style.color = on ? 'var(--brand)' : '';
+  }
+
+  /* ══ WORK EXPERIENCE ══ */
+  let expEnabled = false, expCount = 0;
+
+  function toggleExp() {
+    expEnabled = !expEnabled;
+    document.getElementById('exp-cb').classList.toggle('checked', expEnabled);
+    document.getElementById('exp-toggle').classList.toggle('active', expEnabled);
+    document.getElementById('exp-body').classList.toggle('disabled', !expEnabled);
+    const locked = document.getElementById('exp-locked');
+    const sub = document.getElementById('toggle-sub');
+    if (expEnabled) {
+      locked.classList.add('hidden');
+      sub.textContent = 'Work experience section is now enabled';
+      if (expCount === 0) addExp();
+    } else {
+      locked.classList.remove('hidden');
+      sub.textContent = 'Check to fill in your work history below';
+    }
+  }
+
+  function addExp() {
+    expCount++;
+    const id = 'exp-' + expCount;
+    const n = expCount;
+    document.getElementById('exp-list').insertAdjacentHTML('beforeend', `
+    <div class="sub-card" id="${id}">
+      <div class="sub-card-header">
+        <span class="sub-card-num">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Experience #${n}
+        </span>
+        <button type="button" class="remove-btn" onclick="removeCard('${id}', 'exp')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
+          Remove
+        </button>
+      </div>
+      <div class="grid-2 mb">
+        <div class="field"><label>Employer name <span class="req">*</span></label><input type="text" name="exp_employer_${n}" placeholder="e.g. ABC Technologies"></div>
+        <div class="field"><label>Position / Title <span class="req">*</span></label><input type="text" name="exp_position_${n}" placeholder="e.g. Senior Developer"></div>
+      </div>
+      <div class="grid-2 mb">
+        <div class="field"><label>Start date <span class="req">*</span></label><input type="date" name="exp_start_${n}"></div>
+        <div class="field"><label>End date <span style="font-weight:400;color:var(--text-muted)">(leave blank if current)</span></label><input type="date" name="exp_end_${n}"></div>
+      </div>
+      <div class="field">
+        <label>Reason for leaving</label>
+        <input type="text" name="exp_reason_${n}" placeholder="e.g. Career growth, contract ended, relocation…">
+      </div>
+    </div>`);
+  }
+
+  function removeCard(id, type) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+    if (type === 'edu') {
+      eduCount = document.querySelectorAll('[id^="edu-"]').length;
+    } else {
+      expCount = document.querySelectorAll('[id^="exp-"]').length;
+    }
+  }
+
+  /* ── File display ── */
+  function showFile(input, targetId) {
+    const el = document.getElementById(targetId);
+    if (input.files && input.files[0]) el.textContent = '✓ ' + input.files[0].name;
+  }
+
+  /* ── Submit handler ── */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      body: data,
+    })
+    .then(() => {
+      document.getElementById('success-banner').style.display = 'block';
+      form.reset();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(() => {
+      alert('Something went wrong. Please try again or contact us directly.');
+    });
+  }
+
+  /* Init: add first edu card */
+  addEdu();
+</script>
 
 </body>
 </html>
