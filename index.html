@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkyTech Innovations - Job Application</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>Sky<span>Tech</span> Innovations</h1>
+    <p>Please fill all mandatory fields.</p>
+  </div>
+
+  <form 
+    name="job-application"
+    method="POST"
+    data-netlify="true"
+    enctype="multipart/form-data"
+  >
+
+    <input type="hidden" name="form-name" value="job-application">
+
+    <h2>Personal Information</h2>
+
+    <div class="grid-3">
+      <input type="text" name="firstname" placeholder="First Name" required>
+      <input type="text" name="lastname" placeholder="Last Name" required>
+      <input type="text" name="fathername" placeholder="Father Name" required>
+    </div>
+
+    <div class="grid-2">
+      <input type="date" name="dob" required>
+      <input type="text" id="cnic" name="cnic" placeholder="00000-0000000-0" required>
+    </div>
+
+    <div class="grid-2">
+      <input type="tel" name="phone" placeholder="0300-1234567" required>
+      <input type="text" name="occupation" placeholder="Occupation" required>
+    </div>
+
+    <input type="text" name="address" placeholder="Address" required>
+
+    <div class="grid-3">
+      <select name="province" required>
+        <option value="">Province</option>
+        <option>Punjab</option>
+        <option>Sindh</option>
+        <option>KPK</option>
+        <option>Balochistan</option>
+      </select>
+
+      <input type="text" name="city" placeholder="City" required>
+
+      <select name="gender" required>
+        <option value="">Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <h2>Microsoft Teams Details</h2>
+
+    <div class="grid-2">
+      <input type="email" name="teamsemail" placeholder="MS Teams Email" required>
+      <input type="text" name="teamsusername" placeholder="MS Teams Username" required>
+    </div>
+
+    <h2>Education</h2>
+
+    <textarea name="education" rows="4" placeholder="Enter education details"></textarea>
+
+    <h2>Work Experience</h2>
+
+    <textarea name="experience" rows="4" placeholder="Enter work experience"></textarea>
+
+    <h2>Document Uploads</h2>
+
+    <div class="upload-grid">
+
+      <div class="upload-box">
+        <label>Internet Speed Test</label>
+        <input type="file" name="speedtest" required>
+      </div>
+
+      <div class="upload-box">
+        <label>Resume / CV</label>
+        <input type="file" name="resume" required>
+      </div>
+
+      <div class="upload-box">
+        <label>Profile Picture</label>
+        <input type="file" name="photo" required>
+      </div>
+
+    </div>
+
+    <button type="submit">Submit Application</button>
+
+  </form>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
