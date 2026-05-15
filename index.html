@@ -195,7 +195,7 @@
 
   <form name="job-application" method="POST" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
     <input type="hidden" name="form-name" value="job-application">
-    <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+    <p style="display:none"><label>Don't Fill This Out: <input name="bot-field"></label></p>
 
     <div class="form-card">
       <div class="section-title">
@@ -216,7 +216,7 @@
         </div>
       </div>
       <div class="grid-2 mb">
-       <div class="field"><label>Phone number <span class="req">*</span></label><input type="tel" name="phone" id="phone" placeholder="0300-0000000" maxlength="12" required><span class="hint">Format: 0XXX-XXXXXXX — starts with 0, max 7 digits after -</span><span id="phone-err" style="font-size:11px;color:#C0392B;margin-top:2px;display:none;">Please enter a valid number e.g. 0300-1234567</span></div>
+        <div class="field"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" id="phone" placeholder="0300-0000000" maxlength="12" required><span class="hint">Format: 0XXX-XXXXXXX — starts with 0, max 7 digits after -</span><span id="phone-err" style="font-size:11px;color:#C0392B;margin-top:2px;display:none;">Please enter a valid number e.g. 0300-1234567</span></div>
         <div class="field"><label>Occupation <span class="req">*</span></label><input type="text" name="occupation" placeholder="e.g. Software Engineer" required></div>
       </div>
       <div class="field mb">
@@ -257,24 +257,24 @@
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#5059C9"><rect width="24" height="24" rx="5"/><path d="M16.5 8.25a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0zM7.875 10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM14.625 10.5c0 1.45-.585 2.76-1.53 3.712A5.25 5.25 0 0 1 9.375 15.75H7a2.25 2.25 0 0 1-2.25-2.25v-.75a3 3 0 0 1 3-3h4.5a2.625 2.625 0 0 1 2.625 2.625v-.375zm.75.375h1.5a2.25 2.25 0 0 1 2.25 2.25V14.25a1.5 1.5 0 0 1-1.5 1.5H15.19A6 6 0 0 0 15.75 13v-1.875z" fill="white"/></svg>
-        Microsoft TEAMS Details
+        Microsoft TEAMS Tetails
       </div>
       <div class="grid-2">
         <div class="field">
-          <label>MS TEMAS Email <span class="req">*</span></label>
+          <label>Microsoft Teams Email <span class="req">*</span></label>
           <div class="prefix-wrap">
             <div class="prefix-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <input type="email" name="teams_email" placeholder="e.g. ali.khan@gmail.com" required>
           </div>
-          <span class="hint">Email Address Linked to Your MS TEAMS Account</span>
+          <span class="hint">Email Address Linked to Your Microsoft Teams Account</span>
         </div>
         <div class="field">
-          <label>MS TEAMS Username <span class="req">*</span></label>
+          <label>Microsoft Teams username <span class="req">*</span></label>
           <div class="prefix-wrap">
             <div class="prefix-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <input type="text" name="teams_username" placeholder="e.g. Ali Khan or ali.khan" required>
           </div>
-          <span class="hint">Display name or username shown on MS Teams</span>
+          <span class="hint">Display name or Username Shown on Microsoft Teams</span>
         </div>
       </div>
     </div>
@@ -294,12 +294,12 @@
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        Work experience
+        Work Experience
       </div>
       <div class="exp-toggle" id="exp-toggle" onclick="toggleExp()">
         <div class="big-cb" id="exp-cb"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
         <div class="toggle-text">
-          <span class="toggle-main">Do you have any past work experience?</span>
+          <span class="toggle-main">Do You have Any Past Work Experience?</span>
           <span class="toggle-sub" id="toggle-sub">Check to Fill in Your Work History Below</span>
         </div>
       </div>
@@ -323,7 +323,7 @@
       </div>
       <div class="upload-grid">
         <div>
-          <div class="upload-subhead">Internet Speed Test (Fast.com / OklaSpeedtest.net) <span class="req">*</span></div>
+          <div class="upload-subhead">Internet Speed Test <a href="https://fast.com/"> Click to Check Speed </a> <span class="req">*</span></div>
           <div class="upload-zone"><input type="file" name="speed_test" accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.tiff,.heic" onchange="showFile(this,'f-speed')" required><div class="upload-icon">📡</div><div class="upload-label">Upload file</div><div class="upload-hint">PDF, JPG, PNG or any image</div><div class="upload-fname" id="f-speed"></div></div>
         </div>
         <div>
@@ -331,15 +331,15 @@
           <div class="upload-zone"><input type="file" name="resume" accept=".pdf,.jpg,.jpeg,.png" onchange="showFile(this,'f-resume')" required><div class="upload-icon">📄</div><div class="upload-label">Upload resume</div><div class="upload-hint">PDF, JPG or JPEG only</div><div class="upload-fname" id="f-resume"></div></div>
         </div>
         <div>
-          <div class="upload-subhead">Profile Picture <span class="req">*</span></div>
+          <div class="upload-subhead">Profile picture <span class="req">*</span></div>
           <div class="upload-zone"><input type="file" name="profile_photo" accept=".jpg,.jpeg" onchange="showFile(this,'f-photo')" required><div class="upload-icon">🖼️</div><div class="upload-label">Upload photo</div><div class="upload-hint">JPEG only</div><div class="upload-fname" id="f-photo"></div></div>
         </div>
       </div>
     </div>
 
     <div class="submit-wrap">
-      <button type="submit" class="submit-btn">Submit Application →</button>
-      <div class="success-banner" id="success-banner">✅ Your Application Has Been Submitted Successfully! We'll be in Touch Soon.</div>
+      <button type="submit" class="submit-btn">Submit application →</button>
+      <div class="success-banner" id="success-banner">✅ Your application has been submitted successfully! We'll be in touch soon.</div>
     </div>
   </form>
 
@@ -347,6 +347,92 @@
 </div>
 
 <script>
+  /* ── Phone: must start with 0, auto-hyphen after 4 digits, max 7 after hyphen ── */
+  (function() {
+    const ph = document.getElementById('phone');
+    if (!ph) return;
+
+    ph.addEventListener('keydown', function(e) {
+      // Allow: backspace(8), delete(46), tab(9), escape(27), arrows(37-40), home(36), end(35)
+      const allowed = [8, 9, 27, 35, 36, 37, 38, 39, 40, 46];
+      if (allowed.includes(e.keyCode)) return;
+      // Allow Ctrl/Cmd shortcuts
+      if (e.ctrlKey || e.metaKey) return;
+      // Block non-digit keys entirely
+      if (!/^[0-9]$/.test(e.key)) {
+        e.preventDefault();
+        return;
+      }
+      // Count current digits
+      const digits = this.value.replace(/\D/g, '');
+      // Hard block after 11 digits total (4 prefix + 7 suffix)
+      if (digits.length >= 11) {
+        e.preventDefault();
+        return;
+      }
+    });
+
+    ph.addEventListener('input', function() {
+      let digits = this.value.replace(/\D/g, '');
+
+      // Force first digit to always be 0
+      if (digits.length > 0 && digits[0] !== '0') {
+        digits = '0';
+      }
+
+      // Cap at 11 digits max (4 prefix + 7 suffix)
+      if (digits.length > 11) digits = digits.slice(0, 11);
+
+      // Build formatted string
+      let formatted = '';
+      if (digits.length <= 4) {
+        formatted = digits;
+      } else {
+        formatted = digits.slice(0, 4) + '-' + digits.slice(4, 11);
+      }
+
+      this.value = formatted;
+
+      // Show/hide error
+      const err = document.getElementById('phone-err');
+      if (err) err.style.display = 'none';
+      this.style.borderColor = '';
+      this.style.boxShadow = '';
+    });
+
+    ph.addEventListener('paste', function(e) {
+      e.preventDefault();
+      let pasted = (e.clipboardData || window.clipboardData).getData('text');
+      let digits = pasted.replace(/\D/g, '');
+      // Force start with 0
+      if (digits.length === 0 || digits[0] !== '0') digits = '0';
+      digits = digits.slice(0, 11);
+      let formatted = digits.length <= 4 ? digits : digits.slice(0, 4) + '-' + digits.slice(4);
+      this.value = formatted;
+    });
+
+    ph.addEventListener('blur', function() {
+      const digits = this.value.replace(/\D/g, '');
+      const err = document.getElementById('phone-err');
+      if (this.value.trim() !== '' && (digits.length !== 11 || digits[0] !== '0')) {
+        this.style.borderColor = '#C0392B';
+        this.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        if (err) err.style.display = 'block';
+      } else {
+        this.style.borderColor = '';
+        this.style.boxShadow = '';
+        if (err) err.style.display = 'none';
+      }
+    });
+
+    ph.addEventListener('focus', function() {
+      this.style.borderColor = '';
+      this.style.boxShadow = '';
+      const err = document.getElementById('phone-err');
+      if (err) err.style.display = 'none';
+    });
+  })();
+
   document.getElementById('cnic').addEventListener('input', function () {
     let v = this.value.replace(/\D/g, '');
     let out = '';
