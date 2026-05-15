@@ -26,6 +26,77 @@
       --radius-sm: 6px;
       --shadow: 0 2px 16px rgba(83,74,183,.08);
     }
+    [data-theme="dark"] {
+      --brand: #7B72E9;
+      --brand-light: rgba(123,114,233,.12);
+      --brand-mid: rgba(123,114,233,.2);
+      --danger: #E05252;
+      --success: #4CAF7D;
+      --text-primary: #EAEAF5;
+      --text-secondary: #A9A9C8;
+      --text-muted: #6B6B8A;
+      --border: #2E2E45;
+      --border-focus: #7B72E9;
+      --bg: #0F0F1A;
+      --card-bg: #1A1A2E;
+      --inner-bg: #141428;
+      --radius: 10px;
+      --radius-sm: 6px;
+      --shadow: 0 2px 24px rgba(0,0,0,.4);
+    }
+    [data-theme="dark"] .field input,
+    [data-theme="dark"] .field select {
+      background: #1E1E35;
+      color: var(--text-primary);
+    }
+    [data-theme="dark"] .field input::placeholder { color: var(--text-muted); }
+    [data-theme="dark"] .company-header { border-top-color: #c9a84c; }
+    [data-theme="dark"] .gender-opt.selected { background: rgba(123,114,233,.15); }
+    [data-theme="dark"] .upload-zone:hover { background: var(--brand-light); }
+    [data-theme="dark"] .exp-toggle.active { background: var(--brand-light); }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 999;
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-secondary);
+      box-shadow: var(--shadow);
+      transition: all .2s;
+      user-select: none;
+    }
+    .theme-toggle:hover { border-color: var(--brand); color: var(--brand); }
+    .theme-toggle .toggle-track {
+      width: 32px; height: 18px;
+      background: var(--border);
+      border-radius: 20px;
+      position: relative;
+      transition: background .25s;
+      flex-shrink: 0;
+    }
+    .theme-toggle .toggle-track.on { background: var(--brand); }
+    .theme-toggle .toggle-thumb {
+      width: 13px; height: 13px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 2.5px; left: 2.5px;
+      transition: transform .25s;
+      box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+    .theme-toggle .toggle-track.on .toggle-thumb { transform: translateX(14px); }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; padding: 2rem 1rem 4rem; }
     .page-wrap { max-width: 760px; margin: 0 auto; }
     .company-header { text-align: center; padding: 2rem; background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.5rem; border-top: 4px solid #c9a84c; position: relative; display: flex; align-items: center; justify-content: center; min-height: 110px; }
@@ -103,7 +174,14 @@
   </style>
 </head>
 <body>
-<div class="page-wrap">
+<button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+    <span id="theme-icon">🌙</span>
+    <div class="toggle-track" id="toggle-track">
+      <div class="toggle-thumb"></div>
+    </div>
+    <span id="theme-label">Dark</span>
+  </button>
+  <div class="page-wrap">
 
   <div class="company-header">
     <div class="company-logo">
@@ -111,7 +189,7 @@
     </div>
     <div class="company-center">
       <div class="company-name">Sky<span>Tech</span> Innovations</div>
-      <div class="form-subline">Please fill in the fields below. Fields marked <strong>*</strong> are mandatory.</div>
+      <div class="form-subline">Please Fill in the Fields Below. Fields Marked <strong>*</strong> are Mandatory.</div>
     </div>
   </div>
 
@@ -126,8 +204,8 @@
       </div>
       <div class="grid-3 mb">
         <div class="field"><label>First Name <span class="req">*</span></label><input type="text" name="first_name" placeholder="e.g. Ali" required></div>
-        <div class="field"><label>Last Name <span class="req">*</span></label><input type="text" name="last_name" placeholder="e.g. Ahmed" required></div>
-        <div class="field"><label>Father's Name <span class="req">*</span></label><input type="text" name="father_name" placeholder="e.g. Ahmed Khan" required></div>
+        <div class="field"><label>Last Name <span class="req">*</span></label><input type="text" name="last_name" placeholder="e.g. Khan" required></div>
+        <div class="field"><label>Father's Name <span class="req">*</span></label><input type="text" name="father_name" placeholder="e.g. Mohammad Khan" required></div>
       </div>
       <div class="grid-2 mb">
         <div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" name="dob" required></div>
@@ -138,8 +216,17 @@
         </div>
       </div>
       <div class="grid-2 mb">
-        <div class="field"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" placeholder="e.g. 0300-1234567" required></div>
+       <div class="field"><label>Phone number <span class="req">*</span></label><input type="tel" name="phone" id="phone" placeholder="0300-0000000" maxlength="12" required><span class="hint">Format: 0XXX-XXXXXXX — starts with 0, max 7 digits after -</span><span id="phone-err" style="font-size:11px;color:#C0392B;margin-top:2px;display:none;">Please enter a valid number e.g. 0300-1234567</span></div>
         <div class="field"><label>Occupation <span class="req">*</span></label><input type="text" name="occupation" placeholder="e.g. Software Engineer" required></div>
+      </div>
+      <div class="field mb">
+        <label>Applying for Position <span class="req">*</span></label>
+        <select name="applying_for" required>
+          <option value="" disabled selected>Select a Position</option>
+          <option value="Customer Service Representative (Non-Voice — Avatar Based)">Customer Service Representative (Non-Voice — Avatar Based)</option>
+          <option value="V2 Closer (Non-Voice — Avatar Based)">V2 Closer (Non-Voice — Avatar Based)</option>
+          <option value="Closer (Voice)">Closer (Voice)</option>
+        </select>
       </div>
       <div class="field mb">
         <label>Address <span class="req">*</span></label>
@@ -170,24 +257,24 @@
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#5059C9"><rect width="24" height="24" rx="5"/><path d="M16.5 8.25a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0zM7.875 10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM14.625 10.5c0 1.45-.585 2.76-1.53 3.712A5.25 5.25 0 0 1 9.375 15.75H7a2.25 2.25 0 0 1-2.25-2.25v-.75a3 3 0 0 1 3-3h4.5a2.625 2.625 0 0 1 2.625 2.625v-.375zm.75.375h1.5a2.25 2.25 0 0 1 2.25 2.25V14.25a1.5 1.5 0 0 1-1.5 1.5H15.19A6 6 0 0 0 15.75 13v-1.875z" fill="white"/></svg>
-        Microsoft Teams details
+        Microsoft TEAMS Details
       </div>
       <div class="grid-2">
         <div class="field">
-          <label>MS TEAMS Email <span class="req">*</span></label>
+          <label>MS TEMAS Email <span class="req">*</span></label>
           <div class="prefix-wrap">
             <div class="prefix-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <input type="email" name="teams_email" placeholder="e.g. aliahmed@gmail.com" required>
+            <input type="email" name="teams_email" placeholder="e.g. ali.khan@gmail.com" required>
           </div>
-          <span class="hint">Email address linked to your MS TEAMS Account</span>
+          <span class="hint">Email Address Linked to Your MS TEAMS Account</span>
         </div>
         <div class="field">
-          <label>MS Teams username <span class="req">*</span></label>
+          <label>MS TEAMS Username <span class="req">*</span></label>
           <div class="prefix-wrap">
             <div class="prefix-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <input type="text" name="teams_username" placeholder="e.g. Ali Khan or ali.khan" required>
           </div>
-          <span class="hint">Display name or username shown on MS TEAMS</span>
+          <span class="hint">Display name or username shown on MS Teams</span>
         </div>
       </div>
     </div>
@@ -207,7 +294,7 @@
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        Work Experience
+        Work experience
       </div>
       <div class="exp-toggle" id="exp-toggle" onclick="toggleExp()">
         <div class="big-cb" id="exp-cb"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -218,7 +305,7 @@
       </div>
       <div class="locked-note" id="exp-locked">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Check the Box Above to Add Your Work experience
+        Check the Box Above to Add Your Work Experience
       </div>
       <div class="exp-body disabled" id="exp-body">
         <div id="exp-list"></div>
@@ -236,7 +323,7 @@
       </div>
       <div class="upload-grid">
         <div>
-          <div class="upload-subhead">Internet Speed Test (fast.com / Oklaspeedtest.net) <span class="req">*</span></div>
+          <div class="upload-subhead">Internet Speed Test (Fast.com / OklaSpeedtest.net) <span class="req">*</span></div>
           <div class="upload-zone"><input type="file" name="speed_test" accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.tiff,.heic" onchange="showFile(this,'f-speed')" required><div class="upload-icon">📡</div><div class="upload-label">Upload file</div><div class="upload-hint">PDF, JPG, PNG or any image</div><div class="upload-fname" id="f-speed"></div></div>
         </div>
         <div>
@@ -371,6 +458,42 @@
     .then(() => { document.getElementById('success-banner').style.display = 'block'; e.target.reset(); window.scrollTo({ top: 0, behavior: 'smooth' }); })
     .catch(() => alert('Something went wrong. Please try again.'));
   }
+  /* ── Theme toggle ── */
+  function toggleTheme() {
+    const html = document.documentElement;
+    const track = document.getElementById('toggle-track');
+    const icon = document.getElementById('theme-icon');
+    const label = document.getElementById('theme-label');
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      html.removeAttribute('data-theme');
+      track.classList.remove('on');
+      icon.textContent = '🌙';
+      label.textContent = 'Dark';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      track.classList.add('on');
+      icon.textContent = '☀️';
+      label.textContent = 'Light';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  // Load saved theme
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      const track = document.getElementById('toggle-track');
+      const icon = document.getElementById('theme-icon');
+      const label = document.getElementById('theme-label');
+      if (track) track.classList.add('on');
+      if (icon) icon.textContent = '☀️';
+      if (label) label.textContent = 'Light';
+    }
+  })();
+
   addEdu();
 </script>
 </body>
