@@ -9,118 +9,54 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --brand: #534AB7;
-      --brand-light: rgba(83,74,183,.07);
-      --brand-mid: rgba(83,74,183,.15);
-      --danger: #C0392B;
-      --success: #27AE60;
-      --text-primary: #1a1a2e;
-      --text-secondary: #555570;
-      --text-muted: #9999b3;
-      --border: #e0e0ef;
-      --border-focus: #534AB7;
-      --bg: #f7f7fc;
-      --card-bg: #ffffff;
-      --inner-bg: #f4f4fa;
-      --radius: 10px;
-      --radius-sm: 6px;
+      --brand: #534AB7; --brand-light: rgba(83,74,183,.07); --brand-mid: rgba(83,74,183,.15);
+      --danger: #C0392B; --success: #27AE60; --text-primary: #1a1a2e;
+      --text-secondary: #555570; --text-muted: #9999b3; --border: #e0e0ef;
+      --border-focus: #534AB7; --bg: #f7f7fc; --card-bg: #ffffff;
+      --inner-bg: #f4f4fa; --radius: 10px; --radius-sm: 6px;
       --shadow: 0 2px 16px rgba(83,74,183,.08);
     }
     [data-theme="dark"] {
-      --brand: #7B72E9;
-      --brand-light: rgba(123,114,233,.12);
-      --brand-mid: rgba(123,114,233,.2);
-      --danger: #E05252;
-      --success: #4CAF7D;
-      --text-primary: #EAEAF5;
-      --text-secondary: #A9A9C8;
-      --text-muted: #6B6B8A;
-      --border: #2E2E45;
-      --border-focus: #7B72E9;
-      --bg: #0F0F1A;
-      --card-bg: #1A1A2E;
-      --inner-bg: #141428;
-      --radius: 10px;
-      --radius-sm: 6px;
-      --shadow: 0 2px 24px rgba(0,0,0,.4);
+      --brand: #7B72E9; --brand-light: rgba(123,114,233,.12); --brand-mid: rgba(123,114,233,.2);
+      --danger: #E05252; --success: #4CAF7D; --text-primary: #EAEAF5;
+      --text-secondary: #A9A9C8; --text-muted: #6B6B8A; --border: #2E2E45;
+      --border-focus: #7B72E9; --bg: #0F0F1A; --card-bg: #1A1A2E;
+      --inner-bg: #141428; --shadow: 0 2px 24px rgba(0,0,0,.4);
     }
-    [data-theme="dark"] .field input,
-    [data-theme="dark"] .field select {
-      background: #1E1E35;
-      color: var(--text-primary);
-    }
+    [data-theme="dark"] .field input,[data-theme="dark"] .field select { background: #1E1E35; color: var(--text-primary); }
     [data-theme="dark"] .field input::placeholder { color: var(--text-muted); }
-    [data-theme="dark"] .company-header { border-top-color: #c9a84c; }
     [data-theme="dark"] .gender-opt.selected { background: rgba(123,114,233,.15); }
-    [data-theme="dark"] .upload-zone:hover { background: var(--brand-light); }
-    [data-theme="dark"] .exp-toggle.active { background: var(--brand-light); }
-
-    /* Theme toggle button */
-    .theme-toggle {
-      position: fixed;
-      top: 1.25rem;
-      right: 1.25rem;
-      z-index: 999;
-      background: var(--card-bg);
-      border: 1.5px solid var(--border);
-      border-radius: 50px;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 600;
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text-secondary);
-      box-shadow: var(--shadow);
-      transition: all .2s;
-      user-select: none;
-    }
+    .theme-toggle { position: fixed; top: 1.25rem; right: 1.25rem; z-index: 999; background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 50px; padding: 8px 14px; display: flex; align-items: center; gap: 7px; cursor: pointer; font-size: 12px; font-weight: 600; font-family: "DM Sans", sans-serif; color: var(--text-secondary); box-shadow: var(--shadow); transition: all .2s; user-select: none; }
     .theme-toggle:hover { border-color: var(--brand); color: var(--brand); }
-    .theme-toggle .toggle-track {
-      width: 32px; height: 18px;
-      background: var(--border);
-      border-radius: 20px;
-      position: relative;
-      transition: background .25s;
-      flex-shrink: 0;
-    }
-    .theme-toggle .toggle-track.on { background: var(--brand); }
-    .theme-toggle .toggle-thumb {
-      width: 13px; height: 13px;
-      background: #fff;
-      border-radius: 50%;
-      position: absolute;
-      top: 2.5px; left: 2.5px;
-      transition: transform .25s;
-      box-shadow: 0 1px 3px rgba(0,0,0,.2);
-    }
-    .theme-toggle .toggle-track.on .toggle-thumb { transform: translateX(14px); }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; padding: 2rem 1rem 4rem; }
+    .toggle-track { width: 32px; height: 18px; background: var(--border); border-radius: 20px; position: relative; transition: background .25s; flex-shrink: 0; }
+    .toggle-track.on { background: var(--brand); }
+    .toggle-thumb { width: 13px; height: 13px; background: #fff; border-radius: 50%; position: absolute; top: 2.5px; left: 2.5px; transition: transform .25s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+    .toggle-track.on .toggle-thumb { transform: translateX(14px); }
+    body { font-family: "DM Sans", sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; padding: 2rem 1rem 4rem; }
     .page-wrap { max-width: 760px; margin: 0 auto; }
-    .company-header { text-align: center; padding: 2rem; background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.5rem; border-top: 4px solid #c9a84c; position: relative; display: flex; align-items: center; justify-content: center; min-height: 110px; }
+    .company-header { padding: 2rem; background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 1.5rem; border-top: 4px solid #c9a84c; position: relative; display: flex; align-items: center; justify-content: center; min-height: 110px; }
     .company-logo { position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); }
     .company-logo img { width: 90px; height: 90px; object-fit: contain; border-radius: 12px; }
-    .company-center { display: flex; flex-direction: column; align-items: center; gap: 6px; } .company-name { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--text-primary); letter-spacing: -.01em; }
+    .company-center { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .company-name { font-family: "DM Serif Display", serif; font-size: 26px; color: var(--text-primary); letter-spacing: -.01em; }
     .company-name span { color: #c9a84c; }
-    .form-subline { font-size: 13.5px; color: var(--text-secondary); margin-top: 0; }
+    .form-subline { font-size: 13.5px; color: var(--text-secondary); }
     .form-subline strong { color: var(--danger); }
     .form-card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 2rem; margin-bottom: 1.5rem; }
     .section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--brand); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
-    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .section-title svg { flex-shrink: 0; }
+    .section-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
     .mb { margin-bottom: 14px; }
     .field { display: flex; flex-direction: column; gap: 5px; }
     .field label { font-size: 12px; font-weight: 600; color: var(--text-secondary); letter-spacing: .01em; }
     .req { color: var(--danger); margin-left: 2px; }
-    .field input, .field select, .field textarea { width: 100%; padding: 9px 12px; font-size: 14px; font-family: 'DM Sans', sans-serif; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: #fff; color: var(--text-primary); outline: none; transition: border-color .15s, box-shadow .15s; appearance: none; }
+    .field input, .field select { width: 100%; padding: 9px 12px; font-size: 14px; font-family: "DM Sans", sans-serif; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: #fff; color: var(--text-primary); outline: none; transition: border-color .15s, box-shadow .15s; appearance: none; }
     .field input:focus, .field select:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--brand-mid); }
     .field input:disabled, .field select:disabled { background: var(--inner-bg); color: var(--text-muted); cursor: not-allowed; }
     .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
     .hint { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .err-msg { font-size: 11px; color: var(--danger); margin-top: 2px; display: none; }
     .gender-group { display: flex; gap: 8px; }
     .gender-opt { flex: 1; display: flex; align-items: center; justify-content: center; gap: 5px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 9px 6px; cursor: pointer; font-size: 12px; font-weight: 500; color: var(--text-secondary); transition: all .15s; user-select: none; }
     .gender-opt input { display: none; }
@@ -131,7 +67,7 @@
     .sub-card { border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem; margin-bottom: 12px; background: var(--inner-bg); }
     .sub-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
     .sub-card-num { font-size: 12px; font-weight: 600; color: var(--brand); display: flex; align-items: center; gap: 6px; }
-    .remove-btn { background: none; border: none; cursor: pointer; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--text-muted); padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px; transition: color .15s, background .15s; }
+    .remove-btn { background: none; border: none; cursor: pointer; font-size: 12px; font-family: "DM Sans", sans-serif; color: var(--text-muted); padding: 3px 8px; border-radius: 4px; display: flex; align-items: center; gap: 4px; transition: color .15s, background .15s; }
     .remove-btn:hover { color: var(--danger); background: rgba(192,57,43,.06); }
     .mini-toggle { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; margin-top: 4px; }
     .mini-cb { width: 16px; height: 16px; border: 1.5px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .18s; background: #fff; }
@@ -153,7 +89,7 @@
     .exp-body.disabled { opacity: .35; pointer-events: none; }
     .locked-note { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12px; color: var(--text-muted); border: 1.5px dashed var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 4px; }
     .locked-note.hidden { display: none; }
-    .add-btn { display: flex; align-items: center; gap: 7px; background: none; border: 1.5px dashed var(--border); border-radius: var(--radius); padding: 11px 16px; font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; color: var(--text-secondary); cursor: pointer; width: 100%; justify-content: center; transition: all .15s; margin-top: 4px; }
+    .add-btn { display: flex; align-items: center; gap: 7px; background: none; border: 1.5px dashed var(--border); border-radius: var(--radius); padding: 11px 16px; font-size: 13px; font-weight: 500; font-family: "DM Sans", sans-serif; color: var(--text-secondary); cursor: pointer; width: 100%; justify-content: center; transition: all .15s; margin-top: 4px; }
     .add-btn:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-light); }
     .upload-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
     .upload-subhead { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px; }
@@ -165,50 +101,81 @@
     .upload-hint { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
     .upload-fname { font-size: 11px; color: var(--success); margin-top: 6px; font-weight: 500; min-height: 14px; }
     .submit-wrap { margin-top: 1.5rem; }
-    .submit-btn { width: 100%; padding: 14px; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; background: var(--brand); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; transition: background .15s, transform .1s, box-shadow .15s; box-shadow: 0 4px 14px rgba(83,74,183,.3); letter-spacing: .01em; }
+    .submit-btn { width: 100%; padding: 14px; font-size: 15px; font-weight: 600; font-family: "DM Sans", sans-serif; background: var(--brand); color: #fff; border: none; border-radius: var(--radius); cursor: pointer; transition: background .15s, transform .1s, box-shadow .15s; box-shadow: 0 4px 14px rgba(83,74,183,.3); letter-spacing: .01em; }
     .submit-btn:hover { background: #3d35a0; box-shadow: 0 6px 20px rgba(83,74,183,.4); }
     .submit-btn:active { transform: scale(.99); }
     .success-banner { display: none; background: #eafaf1; border: 1.5px solid #27AE60; border-radius: var(--radius); padding: 1.25rem 1.5rem; text-align: center; margin-top: 1rem; font-size: 14px; font-weight: 500; color: #1e8449; }
     .footer { text-align: center; font-size: 12px; color: var(--text-muted); margin-top: 2rem; }
-    @media (max-width: 600px) { .grid-2, .grid-3, .upload-grid { grid-template-columns: 1fr; } .gender-group { flex-direction: column; } .form-card { padding: 1.25rem; } }
+    @media (max-width: 600px) { .grid-2, .grid-3, .upload-grid { grid-template-columns: 1fr; } .gender-group { flex-direction: column; } .form-card { padding: 1.25rem; } .company-logo { position: static; transform: none; margin-bottom: 10px; } .company-header { flex-direction: column; } }
   </style>
 </head>
 <body>
-<button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
-    <span id="theme-icon">🌙</span>
-    <div class="toggle-track" id="toggle-track">
-      <div class="toggle-thumb"></div>
-    </div>
-    <span id="theme-label">Dark</span>
-  </button>
-  <div class="page-wrap">
 
+<button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+  <span id="theme-icon">🌙</span>
+  <div class="toggle-track" id="toggle-track"><div class="toggle-thumb"></div></div>
+  <span id="theme-label">Dark</span>
+</button>
+
+<div class="page-wrap">
   <div class="company-header">
     <div class="company-logo">
       <img src="data:image/jpeg;base64,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" alt="SkyTech Innovations Logo">
     </div>
     <div class="company-center">
       <div class="company-name">Sky<span>Tech</span> Innovations</div>
-      <div class="form-subline">Please Fill in the Fields Below. Fields Marked <strong>*</strong> are Mandatory.</div>
+      <div class="form-subline">Please fill in the fields below. Fields marked <strong>*</strong> are mandatory.</div>
     </div>
   </div>
 
-  <form name="job-application" method="POST" enctype="multipart/form-data" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+  <!--
+    NETLIFY FORMS — HOW IT WORKS:
+    1. form has data-netlify="true" and name="job-application"
+    2. hidden input name="form-name" matches the form name
+    3. On submit we do a normal HTML POST (no fetch) so files upload correctly
+    4. Netlify redirects to /thank-you.html after success
+    5. Go to Netlify Dashboard → Forms → job-application → Form notifications → add your email
+  -->
+  <form
+    name="job-application"
+    method="POST"
+    enctype="multipart/form-data"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    action="/thank-you.html"
+    onsubmit="return validateForm(event)"
+  >
     <input type="hidden" name="form-name" value="job-application">
-    <p style="display:none"><label>Don't Fill This Out: <input name="bot-field"></label></p>
+    <p style="display:none"><label>Do not fill: <input name="bot-field"></label></p>
 
+    <!-- ══ PERSONAL INFO ══ -->
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         Personal Information
       </div>
       <div class="grid-3 mb">
-        <div class="field"><label>First Name <span class="req">*</span></label><input type="text" name="first_name" placeholder="e.g. Ali" required></div>
-        <div class="field"><label>Last Name <span class="req">*</span></label><input type="text" name="last_name" placeholder="e.g. Khan" required></div>
-        <div class="field"><label>Father's Name <span class="req">*</span></label><input type="text" name="father_name" placeholder="e.g. Mohammad Khan" required></div>
+        <div class="field">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" name="first_name" id="first_name" placeholder="e.g. Ali" required>
+          <span class="err-msg" id="err-first_name">Please enter a valid first name</span>
+        </div>
+        <div class="field">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" name="last_name" id="last_name" placeholder="e.g. Khan" required>
+          <span class="err-msg" id="err-last_name">Please enter a valid last name</span>
+        </div>
+        <div class="field">
+          <label>Father's Name <span class="req">*</span></label>
+          <input type="text" name="father_name" id="father_name" placeholder="e.g. Mohammad Khan" required>
+          <span class="err-msg" id="err-father_name">Please enter a valid father's name</span>
+        </div>
       </div>
       <div class="grid-2 mb">
-        <div class="field"><label>Date of Birth <span class="req">*</span></label><input type="date" name="dob" required></div>
+        <div class="field">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" name="dob" required>
+        </div>
         <div class="field">
           <label>CNIC <span class="req">*</span></label>
           <input type="text" name="cnic" id="cnic" placeholder="00000-0000000-0" maxlength="15" required>
@@ -216,16 +183,24 @@
         </div>
       </div>
       <div class="grid-2 mb">
-        <div class="field"><label>Phone Number <span class="req">*</span></label><input type="tel" name="phone" id="phone" placeholder="0300-0000000" maxlength="12" required><span class="hint">Format: 0XXX-XXXXXXX — starts with 0, max 7 digits after -</span><span id="phone-err" style="font-size:11px;color:#C0392B;margin-top:2px;display:none;">Please enter a valid number e.g. 0300-1234567</span></div>
-        <div class="field"><label>Occupation <span class="req">*</span></label><input type="text" name="occupation" placeholder="e.g. Software Engineer" required></div>
+        <div class="field">
+          <label>Phone Number <span class="req">*</span></label>
+          <input type="tel" name="phone" id="phone" placeholder="0300-0000000" maxlength="12" required>
+          <span class="hint">Must start with 0 — auto formats to 0XXX-XXXXXXX</span>
+          <span class="err-msg" id="phone-err">Please enter a valid 11-digit number e.g. 0300-1234567</span>
+        </div>
+        <div class="field">
+          <label>Occupation <span class="req">*</span></label>
+          <input type="text" name="occupation" placeholder="e.g. Software Engineer" required>
+        </div>
       </div>
       <div class="field mb">
         <label>Applying for Position <span class="req">*</span></label>
         <select name="applying_for" required>
           <option value="" disabled selected>Select a Position</option>
-          <option value="Customer Service Representative (Non-Voice — Avatar Based)">Customer Service Representative (Non-Voice — Avatar Based)</option>
-          <option value="V2 Closer (Non-Voice — Avatar Based)">V2 Closer (Non-Voice — Avatar Based)</option>
-          <option value="Closer (Voice)">Closer (Voice)</option>
+          <option value="Customer Service Representative (Non-Voice — Avatar Based)">1. Customer Service Representative (Non-Voice — Avatar Based)</option>
+          <option value="V2 Closer (Non-Voice — Avatar Based)">2. V2 Closer (Non-Voice — Avatar Based)</option>
+          <option value="Closer (Voice)">3. Closer (Voice)</option>
         </select>
       </div>
       <div class="field mb">
@@ -242,22 +217,35 @@
             <option>Azad Kashmir</option><option>Islamabad Capital Territory</option>
           </select>
         </div>
-        <div class="field"><label>City <span class="req">*</span></label><input type="text" name="city" placeholder="e.g. Lahore" required></div>
+        <div class="field">
+          <label>City <span class="req">*</span></label>
+          <input type="text" name="city" placeholder="e.g. Lahore" required>
+        </div>
         <div class="field">
           <label>Gender <span class="req">*</span></label>
           <div class="gender-group">
-            <label class="gender-opt" id="g-male" onclick="selectGender('male')"><input type="radio" name="gender" value="Male" required><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5.5 5.5M19 5h-5M19 5v5"/></svg> Male</label>
-            <label class="gender-opt" id="g-female" onclick="selectGender('female')"><input type="radio" name="gender" value="Female"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg> Female</label>
-            <label class="gender-opt" id="g-other" onclick="selectGender('other')"><input type="radio" name="gender" value="Other"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg> Other</label>
+            <label class="gender-opt" id="g-male" onclick="selectGender('male')">
+              <input type="radio" name="gender" value="Male" required>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5.5 5.5M19 5h-5M19 5v5"/></svg> Male
+            </label>
+            <label class="gender-opt" id="g-female" onclick="selectGender('female')">
+              <input type="radio" name="gender" value="Female">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="5"/><path d="M12 14v7M9 18h6"/></svg> Female
+            </label>
+            <label class="gender-opt" id="g-other" onclick="selectGender('other')">
+              <input type="radio" name="gender" value="Other">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg> Other
+            </label>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- ══ MS TEAMS ══ -->
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="#5059C9"><rect width="24" height="24" rx="5"/><path d="M16.5 8.25a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0zM7.875 10.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM14.625 10.5c0 1.45-.585 2.76-1.53 3.712A5.25 5.25 0 0 1 9.375 15.75H7a2.25 2.25 0 0 1-2.25-2.25v-.75a3 3 0 0 1 3-3h4.5a2.625 2.625 0 0 1 2.625 2.625v-.375zm.75.375h1.5a2.25 2.25 0 0 1 2.25 2.25V14.25a1.5 1.5 0 0 1-1.5 1.5H15.19A6 6 0 0 0 15.75 13v-1.875z" fill="white"/></svg>
-        Microsoft TEAMS Tetails
+        Microsoft Teams Details
       </div>
       <div class="grid-2">
         <div class="field">
@@ -266,19 +254,20 @@
             <div class="prefix-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <input type="email" name="teams_email" placeholder="e.g. ali.khan@gmail.com" required>
           </div>
-          <span class="hint">Email Address Linked to Your Microsoft Teams Account</span>
+          <span class="hint">Email linked to your Microsoft Teams account</span>
         </div>
         <div class="field">
-          <label>Microsoft Teams username <span class="req">*</span></label>
+          <label>Microsoft Teams Username <span class="req">*</span></label>
           <div class="prefix-wrap">
             <div class="prefix-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5059C9" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
             <input type="text" name="teams_username" placeholder="e.g. Ali Khan or ali.khan" required>
           </div>
-          <span class="hint">Display name or Username Shown on Microsoft Teams</span>
+          <span class="hint">Display name or username shown on Microsoft Teams</span>
         </div>
       </div>
     </div>
 
+    <!-- ══ EDUCATION ══ -->
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
@@ -291,6 +280,7 @@
       </button>
     </div>
 
+    <!-- ══ WORK EXPERIENCE ══ -->
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
@@ -299,13 +289,13 @@
       <div class="exp-toggle" id="exp-toggle" onclick="toggleExp()">
         <div class="big-cb" id="exp-cb"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
         <div class="toggle-text">
-          <span class="toggle-main">Do You have Any Past Work Experience?</span>
-          <span class="toggle-sub" id="toggle-sub">Check to Fill in Your Work History Below</span>
+          <span class="toggle-main">Do you have any past work experience?</span>
+          <span class="toggle-sub" id="toggle-sub">Check to fill in your work history below</span>
         </div>
       </div>
       <div class="locked-note" id="exp-locked">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        Check the Box Above to Add Your Work Experience
+        Check the box above to add your work experience
       </div>
       <div class="exp-body disabled" id="exp-body">
         <div id="exp-list"></div>
@@ -316,6 +306,7 @@
       </div>
     </div>
 
+    <!-- ══ UPLOADS ══ -->
     <div class="form-card">
       <div class="section-title">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -323,23 +314,37 @@
       </div>
       <div class="upload-grid">
         <div>
-          <div class="upload-subhead">Internet Speed Test <a href="https://fast.com/"> Click to Check Speed </a> <span class="req">*</span></div>
-          <div class="upload-zone"><input type="file" name="speed_test" accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.tiff,.heic" onchange="showFile(this,'f-speed')" required><div class="upload-icon">📡</div><div class="upload-label">Upload file</div><div class="upload-hint">PDF, JPG, PNG or any image</div><div class="upload-fname" id="f-speed"></div></div>
+          <div class="upload-subhead">Internet Speed Test <a href="https://fast.com/" target="_blank" style="font-size:10px;color:var(--brand);">Check Speed ↗</a> <span class="req">*</span></div>
+          <div class="upload-zone">
+            <input type="file" name="speed_test" accept=".pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp,.tiff,.heic" onchange="showFile(this,'f-speed')" required>
+            <div class="upload-icon">📡</div><div class="upload-label">Upload file</div>
+            <div class="upload-hint">PDF, JPG, PNG or any image</div>
+            <div class="upload-fname" id="f-speed"></div>
+          </div>
         </div>
         <div>
           <div class="upload-subhead">Resume / CV <span class="req">*</span></div>
-          <div class="upload-zone"><input type="file" name="resume" accept=".pdf,.jpg,.jpeg,.png" onchange="showFile(this,'f-resume')" required><div class="upload-icon">📄</div><div class="upload-label">Upload resume</div><div class="upload-hint">PDF, JPG or JPEG only</div><div class="upload-fname" id="f-resume"></div></div>
+          <div class="upload-zone">
+            <input type="file" name="resume" accept=".pdf,.jpg,.jpeg,.png" onchange="showFile(this,'f-resume')" required>
+            <div class="upload-icon">📄</div><div class="upload-label">Upload resume</div>
+            <div class="upload-hint">PDF, JPG or JPEG only</div>
+            <div class="upload-fname" id="f-resume"></div>
+          </div>
         </div>
         <div>
-          <div class="upload-subhead">Profile picture <span class="req">*</span></div>
-          <div class="upload-zone"><input type="file" name="profile_photo" accept=".jpg,.jpeg" onchange="showFile(this,'f-photo')" required><div class="upload-icon">🖼️</div><div class="upload-label">Upload photo</div><div class="upload-hint">JPEG only</div><div class="upload-fname" id="f-photo"></div></div>
+          <div class="upload-subhead">Profile Picture <span class="req">*</span></div>
+          <div class="upload-zone">
+            <input type="file" name="profile_photo" accept=".jpg,.jpeg" onchange="showFile(this,'f-photo')" required>
+            <div class="upload-icon">🖼️</div><div class="upload-label">Upload photo</div>
+            <div class="upload-hint">JPEG only</div>
+            <div class="upload-fname" id="f-photo"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="submit-wrap">
-      <button type="submit" class="submit-btn">Submit application →</button>
-      <div class="success-banner" id="success-banner">✅ Your application has been submitted successfully! We'll be in touch soon.</div>
+      <button type="submit" class="submit-btn">Submit Application →</button>
     </div>
   </form>
 
@@ -347,104 +352,94 @@
 </div>
 
 <script>
-  /* ── Phone: must start with 0, auto-hyphen after 4 digits, max 7 after hyphen ── */
+  /* ══ PHONE VALIDATION ══ */
   (function() {
     const ph = document.getElementById('phone');
     if (!ph) return;
-
     ph.addEventListener('keydown', function(e) {
-      // Allow: backspace(8), delete(46), tab(9), escape(27), arrows(37-40), home(36), end(35)
-      const allowed = [8, 9, 27, 35, 36, 37, 38, 39, 40, 46];
-      if (allowed.includes(e.keyCode)) return;
-      // Allow Ctrl/Cmd shortcuts
-      if (e.ctrlKey || e.metaKey) return;
-      // Block non-digit keys entirely
-      if (!/^[0-9]$/.test(e.key)) {
-        e.preventDefault();
-        return;
-      }
-      // Count current digits
-      const digits = this.value.replace(/\D/g, '');
-      // Hard block after 11 digits total (4 prefix + 7 suffix)
-      if (digits.length >= 11) {
-        e.preventDefault();
-        return;
-      }
+      const allowed = [8,9,27,35,36,37,38,39,40,46];
+      if (allowed.includes(e.keyCode) || e.ctrlKey || e.metaKey) return;
+      if (!/^[0-9]$/.test(e.key)) { e.preventDefault(); return; }
+      const digits = this.value.replace(/\D/g,'');
+      if (digits.length >= 11) { e.preventDefault(); return; }
+      if (digits.length >= 4 && digits.slice(4).length >= 7) { e.preventDefault(); return; }
     });
-
     ph.addEventListener('input', function() {
-      let digits = this.value.replace(/\D/g, '');
-
-      // Force first digit to always be 0
-      if (digits.length > 0 && digits[0] !== '0') {
-        digits = '0';
-      }
-
-      // Cap at 11 digits max (4 prefix + 7 suffix)
-      if (digits.length > 11) digits = digits.slice(0, 11);
-
-      // Build formatted string
-      let formatted = '';
-      if (digits.length <= 4) {
-        formatted = digits;
-      } else {
-        formatted = digits.slice(0, 4) + '-' + digits.slice(4, 11);
-      }
-
-      this.value = formatted;
-
-      // Show/hide error
-      const err = document.getElementById('phone-err');
-      if (err) err.style.display = 'none';
-      this.style.borderColor = '';
-      this.style.boxShadow = '';
+      let digits = this.value.replace(/\D/g,'');
+      if (digits.length > 0 && digits[0] !== '0') digits = '0';
+      if (digits.length > 11) digits = digits.slice(0,11);
+      this.value = digits.length <= 4 ? digits : digits.slice(0,4) + '-' + digits.slice(4,11);
+      document.getElementById('phone-err').style.display = 'none';
+      this.style.borderColor = ''; this.style.boxShadow = '';
     });
-
     ph.addEventListener('paste', function(e) {
       e.preventDefault();
-      let pasted = (e.clipboardData || window.clipboardData).getData('text');
-      let digits = pasted.replace(/\D/g, '');
-      // Force start with 0
-      if (digits.length === 0 || digits[0] !== '0') digits = '0';
-      digits = digits.slice(0, 11);
-      let formatted = digits.length <= 4 ? digits : digits.slice(0, 4) + '-' + digits.slice(4);
-      this.value = formatted;
+      let digits = (e.clipboardData||window.clipboardData).getData('text').replace(/\D/g,'');
+      if (!digits || digits[0] !== '0') digits = '0';
+      digits = digits.slice(0,11);
+      this.value = digits.length <= 4 ? digits : digits.slice(0,4) + '-' + digits.slice(4);
     });
-
     ph.addEventListener('blur', function() {
-      const digits = this.value.replace(/\D/g, '');
+      const digits = this.value.replace(/\D/g,'');
       const err = document.getElementById('phone-err');
-      if (this.value.trim() !== '' && (digits.length !== 11 || digits[0] !== '0')) {
-        this.style.borderColor = '#C0392B';
-        this.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
-        if (err) err.style.display = 'block';
-      } else {
-        this.style.borderColor = '';
-        this.style.boxShadow = '';
-        if (err) err.style.display = 'none';
-      }
+      if (this.value.trim() && (digits.length !== 11 || digits[0] !== '0')) {
+        this.style.borderColor = '#C0392B'; this.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        err.style.display = 'block';
+      } else { this.style.borderColor = ''; this.style.boxShadow = ''; err.style.display = 'none'; }
     });
-
     ph.addEventListener('focus', function() {
-      this.style.borderColor = '';
-      this.style.boxShadow = '';
-      const err = document.getElementById('phone-err');
-      if (err) err.style.display = 'none';
+      this.style.borderColor = ''; this.style.boxShadow = '';
+      document.getElementById('phone-err').style.display = 'none';
     });
   })();
 
-  document.getElementById('cnic').addEventListener('input', function () {
-    let v = this.value.replace(/\D/g, '');
-    let out = '';
-    if (v.length > 0) out += v.slice(0, 5);
-    if (v.length > 5) out += '-' + v.slice(5, 12);
-    if (v.length > 12) out += '-' + v.slice(12, 13);
+  /* ══ CNIC FORMAT ══ */
+  document.getElementById('cnic').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'');
+    let out = v.slice(0,5);
+    if (v.length > 5) out += '-' + v.slice(5,12);
+    if (v.length > 12) out += '-' + v.slice(12,13);
     this.value = out;
   });
+
+  /* ══ NAME VALIDATION ══ */
+  function isValidName(val) {
+    val = val.trim();
+    if (val.length < 2) return false;
+    if (!/^[a-zA-Z][a-zA-Z\s.\'\-]{1,}$/.test(val)) return false;
+    if (/([a-zA-Z])\1{2,}/.test(val)) return false;
+    const words = val.split(/\s+/).filter(Boolean);
+    for (const w of words) { if (w.replace(/[\'.\-]/g,'').length < 2) return false; }
+    return true;
+  }
+
+  ['first_name','last_name','father_name'].forEach(name => {
+    const el = document.getElementById(name);
+    if (!el) return;
+    el.addEventListener('input', function() {
+      this.value = this.value.replace(/[^a-zA-Z\s.\'\-]/g,'');
+    });
+    el.addEventListener('blur', function() {
+      const err = document.getElementById('err-' + name);
+      if (this.value.trim() && !isValidName(this.value)) {
+        this.style.borderColor = '#C0392B'; this.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        if (err) err.style.display = 'block';
+      } else { this.style.borderColor = ''; this.style.boxShadow = ''; if (err) err.style.display = 'none'; }
+    });
+    el.addEventListener('focus', function() {
+      this.style.borderColor = ''; this.style.boxShadow = '';
+      const err = document.getElementById('err-' + name);
+      if (err) err.style.display = 'none';
+    });
+  });
+
+  /* ══ GENDER ══ */
   function selectGender(val) {
     ['male','female','other'].forEach(g => document.getElementById('g-'+g).classList.remove('selected'));
     document.getElementById('g-'+val).classList.add('selected');
   }
+
+  /* ══ EDUCATION ══ */
   let eduCount = 0;
   function addEdu() {
     eduCount++;
@@ -452,23 +447,49 @@
     document.getElementById('edu-list').insertAdjacentHTML('beforeend', `
     <div class="sub-card" id="${id}">
       <div class="sub-card-header">
-        <span class="sub-card-num"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Education #${n}</span>
-        <button type="button" class="remove-btn" onclick="removeCard('${id}','edu')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg> Remove</button>
+        <span class="sub-card-num">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          Education #${n}
+        </span>
+        <button type="button" class="remove-btn" onclick="removeCard('${id}','edu')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg> Remove
+        </button>
       </div>
       <div class="grid-2 mb">
-        <div class="field"><label>Degree / Level <span class="req">*</span></label><select name="edu_degree_${n}"><option value="" disabled selected>Select degree</option><option>Matric (SSC)</option><option>Intermediate (HSSC)</option><option>Bachelors</option><option>Masters</option><option>MPhil</option><option>PhD</option><option>Diploma / Certificate</option><option>Other</option></select></div>
-        <div class="field"><label>Degree / Program name <span class="req">*</span></label><input type="text" name="edu_program_${n}" placeholder="e.g. Computer Science"></div>
+        <div class="field">
+          <label>Degree / Level <span class="req">*</span></label>
+          <select name="edu_degree_${n}">
+            <option value="" disabled selected>Select degree</option>
+            <option>Matric (SSC)</option><option>Intermediate (HSSC)</option>
+            <option>Bachelors</option><option>Masters</option><option>MPhil</option>
+            <option>PhD</option><option>Diploma / Certificate</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Program Name <span class="req">*</span></label>
+          <input type="text" name="edu_program_${n}" placeholder="e.g. Computer Science">
+        </div>
       </div>
       <div class="grid-2 mb">
-        <div class="field"><label>Institute name <span class="req">*</span></label><input type="text" name="edu_institute_${n}" placeholder="e.g. University of Punjab"></div>
-        <div class="field"><label>Year of completion <span class="req">*</span></label><input type="number" name="edu_year_${n}" id="yr-${id}" min="1970" max="2035" placeholder="e.g. 2022"><span class="hint" id="yr-hint-${id}">Enter the year you completed this degree</span></div>
+        <div class="field">
+          <label>Institute Name <span class="req">*</span></label>
+          <input type="text" name="edu_institute_${n}" placeholder="e.g. University of Punjab">
+        </div>
+        <div class="field">
+          <label>Year of Completion <span class="req">*</span></label>
+          <input type="number" name="edu_year_${n}" id="yr-${id}" min="1970" max="2035" placeholder="e.g. 2022">
+          <span class="hint" id="yr-hint-${id}">Enter the year you completed this degree</span>
+        </div>
       </div>
       <label class="mini-toggle" onclick="toggleContinuing('${id}')">
-        <div class="mini-cb" id="cb-${id}"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="mini-cb" id="cb-${id}">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
         <span class="mini-label">Currently continuing — not yet completed</span>
       </label>
     </div>`);
   }
+
   function toggleContinuing(id) {
     const cb = document.getElementById('cb-'+id), yr = document.getElementById('yr-'+id), hint = document.getElementById('yr-hint-'+id);
     const on = !cb.classList.contains('checked');
@@ -478,6 +499,8 @@
     hint.textContent = on ? 'Year not required — currently enrolled' : 'Enter the year you completed this degree';
     hint.style.color = on ? 'var(--brand)' : '';
   }
+
+  /* ══ WORK EXPERIENCE ══ */
   let expEnabled = false, expCount = 0;
   function toggleExp() {
     expEnabled = !expEnabled;
@@ -488,89 +511,86 @@
     if (expEnabled) { locked.classList.add('hidden'); sub.textContent = 'Work experience section is now enabled'; if (expCount === 0) addExp(); }
     else { locked.classList.remove('hidden'); sub.textContent = 'Check to fill in your work history below'; }
   }
+
   function addExp() {
     expCount++;
     const id = 'exp-'+expCount, n = expCount;
     document.getElementById('exp-list').insertAdjacentHTML('beforeend', `
     <div class="sub-card" id="${id}">
       <div class="sub-card-header">
-        <span class="sub-card-num"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> Experience #${n}</span>
-        <button type="button" class="remove-btn" onclick="removeCard('${id}','exp')"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg> Remove</button>
+        <span class="sub-card-num">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          Experience #${n}
+        </span>
+        <button type="button" class="remove-btn" onclick="removeCard('${id}','exp')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg> Remove
+        </button>
       </div>
       <div class="grid-2 mb">
-        <div class="field"><label>Employer name <span class="req">*</span></label><input type="text" name="exp_employer_${n}" placeholder="e.g. ABC Technologies"></div>
+        <div class="field"><label>Employer Name <span class="req">*</span></label><input type="text" name="exp_employer_${n}" placeholder="e.g. ABC Technologies"></div>
         <div class="field"><label>Position / Title <span class="req">*</span></label><input type="text" name="exp_position_${n}" placeholder="e.g. Senior Developer"></div>
       </div>
       <div class="grid-2 mb">
-        <div class="field"><label>Start date <span class="req">*</span></label><input type="date" name="exp_start_${n}"></div>
-        <div class="field"><label>End date <span style="font-weight:400;color:var(--text-muted)">(leave blank if current)</span></label><input type="date" name="exp_end_${n}"></div>
+        <div class="field"><label>Start Date <span class="req">*</span></label><input type="date" name="exp_start_${n}"></div>
+        <div class="field"><label>End Date <span style="font-weight:400;color:var(--text-muted)">(leave blank if current)</span></label><input type="date" name="exp_end_${n}"></div>
       </div>
-      <div class="field"><label>Reason for leaving</label><input type="text" name="exp_reason_${n}" placeholder="e.g. Career growth, contract ended…"></div>
+      <div class="field"><label>Reason for Leaving</label><input type="text" name="exp_reason_${n}" placeholder="e.g. Career growth, contract ended…"></div>
     </div>`);
   }
+
   function removeCard(id, type) {
     const el = document.getElementById(id); if (el) el.remove();
     if (type === 'edu') eduCount = document.querySelectorAll('[id^="edu-"]').length;
     else expCount = document.querySelectorAll('[id^="exp-"]').length;
   }
+
+  /* ══ FILE DISPLAY ══ */
   function showFile(input, targetId) {
     const el = document.getElementById(targetId);
     if (input.files && input.files[0]) el.textContent = '✓ ' + input.files[0].name;
   }
-  function handleSubmit(e) {
-    e.preventDefault();
-    // Validate name fields
+
+  /* ══ FORM VALIDATION (returns true to allow native POST) ══ */
+  function validateForm(e) {
+    // Validate names
     const nameFields = ['first_name','last_name','father_name'];
     for (const name of nameFields) {
-      const el = document.querySelector('input[name="' + name + '"]');
+      const el = document.getElementById(name);
+      const err = document.getElementById('err-' + name);
       if (el && !isValidName(el.value)) {
-        el.style.borderColor = '#C0392B';
-        el.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
-        el.focus();
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
+        el.style.borderColor = '#C0392B'; el.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        if (err) err.style.display = 'block';
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();
+        e.preventDefault(); return false;
       }
     }
     // Validate phone
-    const phone = document.querySelector('input[name="phone"]');
-    if (phone && phone.value.replace(/\D/g,'').length !== 11) {
-      phone.style.borderColor = '#C0392B';
-      phone.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
-      phone.focus();
-      phone.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
+    const phone = document.getElementById('phone');
+    if (phone) {
+      const digits = phone.value.replace(/\D/g,'');
+      if (digits.length !== 11 || digits[0] !== '0') {
+        phone.style.borderColor = '#C0392B'; phone.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        document.getElementById('phone-err').style.display = 'block';
+        phone.scrollIntoView({ behavior: 'smooth', block: 'center' }); phone.focus();
+        e.preventDefault(); return false;
+      }
     }
-    fetch('/', { method: 'POST', body: new FormData(e.target) })
-    .then(() => { document.getElementById('success-banner').style.display = 'block'; e.target.reset(); window.scrollTo({ top: 0, behavior: 'smooth' }); })
-    .catch(() => alert('Something went wrong. Please try again.'));
+    return true; // allow native form POST to Netlify
   }
-  /* ── Theme toggle ── */
+
+  /* ══ THEME TOGGLE ══ */
   function toggleTheme() {
     const html = document.documentElement;
     const track = document.getElementById('toggle-track');
     const icon = document.getElementById('theme-icon');
     const label = document.getElementById('theme-label');
     const isDark = html.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      html.removeAttribute('data-theme');
-      track.classList.remove('on');
-      icon.textContent = '🌙';
-      label.textContent = 'Dark';
-      localStorage.setItem('theme', 'light');
-    } else {
-      html.setAttribute('data-theme', 'dark');
-      track.classList.add('on');
-      icon.textContent = '☀️';
-      label.textContent = 'Light';
-      localStorage.setItem('theme', 'dark');
-    }
+    if (isDark) { html.removeAttribute('data-theme'); track.classList.remove('on'); icon.textContent = '🌙'; label.textContent = 'Dark'; localStorage.setItem('theme','light'); }
+    else { html.setAttribute('data-theme','dark'); track.classList.add('on'); icon.textContent = '☀️'; label.textContent = 'Light'; localStorage.setItem('theme','dark'); }
   }
-
-  // Load saved theme
   (function() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme','dark');
       const track = document.getElementById('toggle-track');
       const icon = document.getElementById('theme-icon');
       const label = document.getElementById('theme-label');
