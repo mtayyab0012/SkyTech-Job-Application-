@@ -552,31 +552,79 @@
 
   /* ══ FORM VALIDATION + SUBMIT ══ */
   function validateAndSubmit() {
-    // Validate names
+    const form = document.getElementById('main-form');
+
+    // Step 1: Check all required inputs/selects/textareas
+    const required = form.querySelectorAll('input[required], select[required], textarea[required]');
+    for (const el of required) {
+      if (!el.value.trim()) {
+        el.style.borderColor = '#C0392B';
+        el.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.focus();
+        alert('Please fill in all required fields marked with *');
+        return;
+      }
+      // Reset border if filled
+      el.style.borderColor = '';
+      el.style.boxShadow = '';
+    }
+
+    // Step 2: Check gender radio
+    const gender = form.querySelector('input[name="gender"]:checked');
+    if (!gender) {
+      const gGroup = document.querySelector('.gender-group');
+      gGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      alert('Please select your gender');
+      return;
+    }
+
+    // Step 3: Check required file uploads
+    const fileInputs = [
+      { id: 'speed_test', label: 'Internet Speed Test' },
+      { id: 'resume',     label: 'Resume / CV' },
+      { id: 'profile_photo', label: 'Profile Picture' }
+    ];
+    for (const f of fileInputs) {
+      const el = form.querySelector('input[name="' + f.id + '"]');
+      if (el && el.files.length === 0) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        alert('Please upload: ' + f.label);
+        return;
+      }
+    }
+
+    // Step 4: Validate name fields
     const nameFields = ['first_name','last_name','father_name'];
     for (const name of nameFields) {
       const el = document.getElementById(name);
       const err = document.getElementById('err-' + name);
       if (el && !isValidName(el.value)) {
-        el.style.borderColor = '#C0392B'; el.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        el.style.borderColor = '#C0392B';
+        el.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
         if (err) err.style.display = 'block';
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.focus();
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.focus();
         return;
       }
     }
-    // Validate phone
+
+    // Step 5: Validate phone
     const phone = document.getElementById('phone');
     if (phone) {
       const digits = phone.value.replace(/\D/g,'');
       if (digits.length !== 11 || digits[0] !== '0') {
-        phone.style.borderColor = '#C0392B'; phone.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
+        phone.style.borderColor = '#C0392B';
+        phone.style.boxShadow = '0 0 0 3px rgba(192,57,43,.12)';
         document.getElementById('phone-err').style.display = 'block';
-        phone.scrollIntoView({ behavior: 'smooth', block: 'center' }); phone.focus();
+        phone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        phone.focus();
         return;
       }
     }
-    // All valid — submit the form natively
-    document.getElementById('main-form').submit();
+
+    // All passed — submit!
+    form.submit();
   }
 
   /* ══ THEME TOGGLE ══ */
